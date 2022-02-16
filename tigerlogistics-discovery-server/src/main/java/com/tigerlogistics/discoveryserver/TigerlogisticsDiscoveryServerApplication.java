@@ -8,6 +8,7 @@ public class TigerlogisticsDiscoveryServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TigerlogisticsDiscoveryServerApplication.class, args);
+		//This is a test
 	}
 
 }
