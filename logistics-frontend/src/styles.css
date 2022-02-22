@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/css/Header-Blue.css";
+@import "assets/css/Navigation-with-Button.css";
+
+/* #wrapper {
+width: 20%;
+position: absolute;
+top: 0;
+bottom: 0;
+backgrond-color: #184e8e;
+}*/
+
+#wrapper {
+  height: 100%; /*Full-height: remove this if you want "auto" height */
+  width: 20%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #184e8e; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+#main-outlet {
+  width: 80%;
+  float: right;
+  padding: 12px;
+}
+
+.fas {
+  margin: 8px;
+}
+
+#log {
+  margin: 18px 8px !important;
+}
+
+#role {
+  margin: 8px !important;
+}
+
+.nav-item {
+  align-items: flex-start;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
