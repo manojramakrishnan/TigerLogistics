@@ -7,6 +7,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from "./auth.component";
 import { RequestQuestionComponent } from './request-question/request-question.component';
+import { RequestSessionComponent } from './request-session/request-session.component';
+import { AddDistributorComponent } from './add-distributor/add-distributor.component';
 
 
 
@@ -15,7 +17,9 @@ import { RequestQuestionComponent } from './request-question/request-question.co
     LoginComponent,
     ChangePasswordComponent,
     AuthComponent,
-    RequestQuestionComponent
+    RequestQuestionComponent,
+    RequestSessionComponent,
+    AddDistributorComponent
   ],
 
 

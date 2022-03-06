@@ -30,6 +30,9 @@ import { UpdateSupplierComponent } from './supplier/update-supplier/update-suppl
 import { ViewSupplierComponent } from './supplier/view-supplier/view-supplier.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { ViewUsersComponent } from './users/view-users/view-users.component';
+import { AddDistributorComponent } from './distributor/add-distributor/add-distributor.component';
+import { UpdateDistributorComponent } from './distributor/update-distributor/update-distributor.component';
+import { ViewDistributorComponent } from './distributor/view-distributor/view-distributor.component';
 
 
 @NgModule({
@@ -59,7 +62,10 @@ import { ViewUsersComponent } from './users/view-users/view-users.component';
     UpdateSupplierComponent,
     ViewSupplierComponent,
     AddUserComponent,
-    ViewUsersComponent
+    ViewUsersComponent,
+    AddDistributorComponent,
+    UpdateDistributorComponent,
+    ViewDistributorComponent
   ],
   imports: [
     BrowserModule,
