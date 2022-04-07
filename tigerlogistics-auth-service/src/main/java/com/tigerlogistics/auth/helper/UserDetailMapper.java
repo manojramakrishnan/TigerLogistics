@@ -25,8 +25,6 @@ public class UserDetailMapper {
 		userDetails.setPhoneNo(registerRequest.getPhoneNo());
 		userDetails.setSecurityQuestion("Question");
 		userDetails.setSecurityAnswer("Answer");
-		
-		
 		return userDetails;
 		
 	}

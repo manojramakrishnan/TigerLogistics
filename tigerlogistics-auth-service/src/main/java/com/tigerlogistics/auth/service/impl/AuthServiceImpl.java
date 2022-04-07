@@ -1,9 +1,7 @@
 package com.tigerlogistics.auth.service.impl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.tigerlogistics.auth.dto.RegisterRequest;
 import com.tigerlogistics.auth.dto.UserDetailsDTO;
 import com.tigerlogistics.auth.entity.UserDetails;
@@ -17,7 +15,7 @@ import com.tigerlogistics.auth.service.AuthService;
 public class AuthServiceImpl implements AuthService {
 	@Autowired
 	private UserRepository userRepository;
-	@Autowired
+	
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private AddressRepository addressRepository;

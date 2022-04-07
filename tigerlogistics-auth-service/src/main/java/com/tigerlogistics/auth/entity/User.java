@@ -1,13 +1,22 @@
 package com.tigerlogistics.auth.entity;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class User {
+	@Id
+	@SequenceGenerator(name="user_id_sequence",initialValue=10000,allocationSize=1)
+	@GeneratedValue(generator="user_id_sequence",strategy=SEQUENCE)
 	private Long userId;
 	private String username;
 	private String password;
 	private String role;
+	
 	public Long getUserId() {
 		return userId;
 	}
