@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
-//import com.tigerlogistics.auth.dto.RegisterRequest;
+
 import com.tigerlogistics.auth.dto.UserDetailsDTO;
 import com.tigerlogistics.auth.service.AuthService;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/auth")
 public class AuthController {
 	@Autowired
 	private AuthService authService;
-	@PostMapping
+	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
 		return ResponseEntity.status(HttpStatus.CREATED).body(authService.login(loginRequest));
 			
