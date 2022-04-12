@@ -2,10 +2,10 @@ package com.tigerlogistics.auth.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+import lombok.AllArgsConstructor;
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
-//import com.tigerlogistics.auth.dto.LoginResponse;
+import org.springframework.transaction.annotation.Transactional;
 import com.tigerlogistics.auth.dto.RegisterRequest;
 import com.tigerlogistics.auth.dto.UserDetailsDTO;
 import com.tigerlogistics.auth.entity.User;
@@ -17,7 +17,10 @@ import com.tigerlogistics.auth.repository.UserDetailsRepository;
 import com.tigerlogistics.auth.repository.UserRepository;
 import com.tigerlogistics.auth.security.JwtProvider;
 import com.tigerlogistics.auth.service.AuthService;
+
 @Service
+@AllArgsConstructor
+@Transactional
 public class AuthServiceImpl implements AuthService {
 	@Autowired
 	private UserRepository userRepository;
@@ -27,14 +30,14 @@ public class AuthServiceImpl implements AuthService {
 	private AddressRepository addressRepository;
 	@Autowired
 	private UserDetailsRepository userDetailsRepository;
-	@Autowired
+	
 	private JwtProvider jwtProvider;
 
 	
  
 	@Override
 	public UserDetailsDTO register(RegisterRequest registerRequest) {
-		// TODO Auto-generated method stub
+		
 		checkIfUsernameExists(registerRequest.getUsername());
 		registerRequest.setPassword(encodePassword(registerRequest.getPassword()));
 		registerRequest.setAddress((addressRepository.save(registerRequest.getAddress())));
@@ -46,13 +49,13 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	private String encodePassword(String password) {
-		// TODO Auto-generated method stub
+		
 		
 		return passwordEncoder.encode(password);
 	}
 
 	private boolean checkIfUsernameExists(String username) {
-		// TODO Auto-generated method stub
+		
 		if(!userRepository.existsByUsername(username)) return false;
 		else throw new InvalidCredentialException("username","Username exists"); 
 		
