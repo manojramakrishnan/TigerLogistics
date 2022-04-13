@@ -8,6 +8,7 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -62,6 +63,12 @@ import io.jsonwebtoken.security.Keys;
 	  public SecretKey getSecretKey () {
 	    return Keys.hmacShaKeyFor(secret.getBytes());
 	  }
+	  //newly added
+	  @Bean
+	  public BCryptPasswordEncoder passwordEncoder() {
+	      return new BCryptPasswordEncoder();
+	  }
+
 
 	}
 

@@ -24,7 +24,6 @@ import com.tigerlogistics.auth.service.AuthService;
 public class AuthServiceImpl implements AuthService {
 	@Autowired
 	private UserRepository userRepository;
-	
 	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private AddressRepository addressRepository;
