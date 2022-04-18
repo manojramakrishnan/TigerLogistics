@@ -1,14 +1,23 @@
-import { Injectable, ErrorHandler } from '@angular/core';
-import { ErrorDialogService } from '../services/error-dialog.service';
+import { Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-@Injectable()
-export class GlobalErrorHandler implements ErrorHandler {
-  constructor(private errorDialogService: ErrorDialogService) {}
+@Component({
+  selector: 'app-error-display',
+  templateUrl: './error-display.component.html',
+  styleUrls: ['./error-display.component.css'],
+})
 
-  handleError(error: Error) {
-    console.log(error);
-    this.errorDialogService.openDialog(
-      error.message || 'Undefined client error'
-    );
+export class ErrorDisplayComponent implements OnInit {
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: { message: string; status?: number }
+
+  ) {}
+
+  ngOnInit(): void {}
+
+  onClose() {
   }
+
 }
