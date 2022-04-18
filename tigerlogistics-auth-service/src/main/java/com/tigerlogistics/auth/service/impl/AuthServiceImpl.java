@@ -1,11 +1,14 @@
 package com.tigerlogistics.auth.service.impl;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
-import org.springframework.transaction.annotation.Transactional;
 import com.tigerlogistics.auth.dto.RegisterRequest;
 import com.tigerlogistics.auth.dto.UserDetailsDTO;
 import com.tigerlogistics.auth.entity.User;
@@ -17,6 +20,8 @@ import com.tigerlogistics.auth.repository.UserDetailsRepository;
 import com.tigerlogistics.auth.repository.UserRepository;
 import com.tigerlogistics.auth.security.JwtProvider;
 import com.tigerlogistics.auth.service.AuthService;
+
+import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
@@ -77,7 +82,21 @@ public class AuthServiceImpl implements AuthService {
 		if(!passwordEncoder.matches(password, user.getPassword())) throw new InvalidCredentialException("password","invalid password");
 		return user;
 	}
-	
+
+	@Override
+	public Map<String, String> fetchSecurityQuestionForUser(String username) {
+		// TODO Auto-generated method stub
+		HashMap<String,String> responseMap=new HashMap<String,String>();
+		responseMap.put("username", username);
+		UserDetails userDetails=userDetailsRepository.findByUsername(username);
+		if(userDetails !=null && userDetails.getSecurityQuestion()!=null) {
+		responseMap.put("securityquestion",userDetails.getSecurityQuestion());
+		}
+		else {
+			throw new InvalidCredentialException("username","User" +username+ "doesn't exist");
+		}
+		return responseMap;
+	}
 	
 
 }

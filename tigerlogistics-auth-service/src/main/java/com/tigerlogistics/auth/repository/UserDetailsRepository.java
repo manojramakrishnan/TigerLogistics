@@ -8,4 +8,6 @@ import com.tigerlogistics.auth.entity.UserDetails;
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetails,Long>{
 
+	UserDetails findByUsername(String username);
+
 }
