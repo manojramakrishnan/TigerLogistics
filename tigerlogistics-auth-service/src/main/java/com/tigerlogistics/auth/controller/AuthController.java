@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tigerlogistics.auth.dto.ForgetPasswordRequest;
 import com.tigerlogistics.auth.dto.ForgetPasswordResponse;
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
@@ -32,6 +34,10 @@ public class AuthController {
 	public ResponseEntity<Map<String,String>> forgetPassword(@PathVariable String username){
 		return ResponseEntity.status(HttpStatus.OK).body(authService.fetchSecurityQuestionForUser(username));
 	}
-	
+	@PutMapping("/forgotpassword")
+	public ResponseEntity<Map<String,String>> validateAnswerAndUpdate(@RequestBody ForgetPasswordRequest forgetPasswordRequest){
+		return ResponseEntity.status(HttpStatus.OK).body(authService.validateAnswerAndUpdate(forgetPasswordRequest));
+		
+	}
 
 }

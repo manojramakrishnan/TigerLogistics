@@ -1,4 +1,5 @@
 package com.tigerlogistics.auth.service.impl;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tigerlogistics.auth.dto.ForgetPasswordRequest;
+import com.tigerlogistics.auth.dto.ForgetPasswordResponse;
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
 import com.tigerlogistics.auth.dto.RegisterRequest;
@@ -86,16 +89,34 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public Map<String, String> fetchSecurityQuestionForUser(String username) {
 		// TODO Auto-generated method stub
-		HashMap<String,String> responseMap=new HashMap<String,String>();
+		HashMap<String, String> responseMap = new HashMap<String, String>();
 		responseMap.put("username", username);
-		UserDetails userDetails=userDetailsRepository.findByUsername(username);
-		if(userDetails !=null && userDetails.getSecurityQuestion()!=null) {
-		responseMap.put("securityquestion",userDetails.getSecurityQuestion());
-		}
-		else {
-			throw new InvalidCredentialException("username","User" +username+ "doesn't exist");
+		User user=userRepository.findByUsername(username);
+		UserDetails userDetails = userDetailsRepository.findByUserDetailsId(user.getUserId());
+		if (userDetails != null && userDetails.getSecurityQuestion() != null) {
+			responseMap.put("securityquestion", userDetails.getSecurityQuestion());
+		} else {
+			throw new InvalidCredentialException("username", "User" + username + "doesn't exist");
 		}
 		return responseMap;
+	}
+
+	@Override
+	public Map<String,String> validateAnswerAndUpdate(ForgetPasswordRequest forgetPasswordRequest) {
+		
+		UserDetails userDetails = userDetailsRepository.findByUserName(forgetPasswordRequest.getUsername());
+		if(userDetails != null && userDetails.getSecurityQuestion() != null) {
+			User user=userDetails.getUser();
+			user.setPassword(encodePassword(forgetPasswordRequest.getNewpassword()));
+			userRepository.save(user);
+			
+		}
+		else {
+			throw new InvalidCredentialException("username","user"+forgetPasswordRequest.getUsername()+"doesn't exist");
+		}
+		
+		return Collections.singletonMap("userId", userDetails.getUserDetailsId().toString());
+		
 	}
 	
 

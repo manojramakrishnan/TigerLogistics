@@ -2,6 +2,7 @@ package com.tigerlogistics.auth.service;
 
 import java.util.Map;
 
+import com.tigerlogistics.auth.dto.ForgetPasswordRequest;
 import com.tigerlogistics.auth.dto.ForgetPasswordResponse;
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
@@ -13,5 +14,7 @@ public interface AuthService {
 	UserDetailsDTO register(RegisterRequest registerRequest);
 	LoginResponse login(LoginRequest loginRequest);
 	Map<String,String> fetchSecurityQuestionForUser(String username);
+	Map<String,String> validateAnswerAndUpdate(ForgetPasswordRequest forgetPasswordRequest);
+	
 
 }
