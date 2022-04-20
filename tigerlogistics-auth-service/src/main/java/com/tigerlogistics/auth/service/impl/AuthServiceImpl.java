@@ -103,12 +103,18 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public Map<String,String> validateAnswerAndUpdate(ForgetPasswordRequest forgetPasswordRequest) {
-		
-		UserDetails userDetails = userDetailsRepository.findByUserName(forgetPasswordRequest.getUsername());
-		if(userDetails != null && userDetails.getSecurityQuestion() != null) {
-			User user=userDetails.getUser();
-			user.setPassword(encodePassword(forgetPasswordRequest.getNewpassword()));
-			userRepository.save(user);
+		User user1=userRepository.findByUsername(forgetPasswordRequest.getUsername());
+		UserDetails userDetails = userDetailsRepository.findByUserDetailsId(user1.getUserId());
+		//UserDetails userDetails = userDetailsRepository.findByUserName(forgetPasswordRequest.getUsername());
+		if(userDetails != null && userDetails.getSecurityAnswer() != null) {
+			if(userDetails.getSecurityAnswer().equalsIgnoreCase(forgetPasswordRequest.getSecurityanswer())) {
+				User user=userDetails.getUser();
+				user.setPassword(encodePassword(forgetPasswordRequest.getNewpassword()));
+				userRepository.save(user);
+			}
+			else {
+				throw new InvalidCredentialException("securityanswer","InvalidAnswer");
+			}
 			
 		}
 		else {
