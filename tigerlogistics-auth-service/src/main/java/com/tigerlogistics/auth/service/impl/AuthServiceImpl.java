@@ -1,15 +1,18 @@
 package com.tigerlogistics.auth.service.impl;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tigerlogistics.auth.dto.AllUsers;
 import com.tigerlogistics.auth.dto.ForgetPasswordRequest;
-import com.tigerlogistics.auth.dto.ForgetPasswordResponse;
 import com.tigerlogistics.auth.dto.LoginRequest;
 import com.tigerlogistics.auth.dto.LoginResponse;
 import com.tigerlogistics.auth.dto.RegisterRequest;
@@ -124,6 +127,19 @@ public class AuthServiceImpl implements AuthService {
 		return Collections.singletonMap("userId", userDetails.getUserDetailsId().toString());
 		
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<UserDetailsDTO> fetchAllUsers() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return userDetailsRepository.findAll().stream().map(UserDetailMapper::userDetailsToDto).collect(Collectors.toList());
+	}
+
+	
+
 	
 
 }

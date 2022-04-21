@@ -31,7 +31,11 @@ public class UserDetailMapper {
 
 	public static UserDetailsDTO userDetailsToDto(UserDetails userDetails) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return UserDetailsDTO.builder().userId(userDetails.getUserDetailsId()).username(userDetails.getUser().getUsername()).role(userDetails.getUser().getRole()).
+				designation(userDetails.getDesignation()).gender(userDetails.getGender()).emailId(userDetails.getEmailId()).dob(userDetails.getDob())
+				.address(userDetails.getAddress()).phoneNo(userDetails.getPhoneNo()).firstName(userDetails.getFirstName()).lastName(userDetails.getLastName()).build();
+		
 	}
 
 }
