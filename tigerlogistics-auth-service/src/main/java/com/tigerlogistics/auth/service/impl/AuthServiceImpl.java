@@ -138,6 +138,14 @@ public class AuthServiceImpl implements AuthService {
 		return userDetailsRepository.findAll().stream().map(UserDetailMapper::userDetailsToDto).collect(Collectors.toList());
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public UserDetailsDTO fetchUsersById(long userId) {
+		// TODO Auto-generated method stub
+		
+		return UserDetailMapper.userDetailsToDto(userDetailsRepository.findByUserDetailsId(userId));
+	}
+
 	
 
 	

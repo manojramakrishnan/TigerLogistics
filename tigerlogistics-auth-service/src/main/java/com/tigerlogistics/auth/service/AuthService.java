@@ -18,6 +18,7 @@ public interface AuthService {
 	Map<String,String> fetchSecurityQuestionForUser(String username);
 	Map<String,String> validateAnswerAndUpdate(ForgetPasswordRequest forgetPasswordRequest);
 	List<UserDetailsDTO> fetchAllUsers();
+	UserDetailsDTO fetchUsersById(long userId);
 	
 
 }
