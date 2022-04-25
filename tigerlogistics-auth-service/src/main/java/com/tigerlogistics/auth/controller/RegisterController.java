@@ -24,7 +24,7 @@ import com.tigerlogistics.auth.service.AuthService;
 public class RegisterController {
 	@Autowired
 	private AuthService authService;
-	@PutMapping
+	@PostMapping
 	public ResponseEntity<UserDetailsDTO> register(@RequestBody RegisterRequest registerRequest){
 	
 			return ResponseEntity.status(HttpStatus.CREATED).body(authService.register(registerRequest));
