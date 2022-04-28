@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
 import com.tigerlogistics.productorder.entity.Distributor;
-import com.tigerlogistics.productorder.entity.OrderStatus;
+import com.tigerlogistics.productorder.enums.OrderStatus;
 import com.tigerlogistics.productorder.entity.Product;
-import com.tigerlogistics.productorder.entity.ProductOrder;
-import com.tigerlogistics.productorder.entity.QualityCheck;
+import com.tigerlogistics.productorder.enums.ProductOrder;
+import com.tigerlogistics.productorder.enums.QualityCheck;
 
 public class ProductOrderMapper {
 
