@@ -5,24 +5,48 @@ import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Builder
 public class ProductOrderRequest {
 
+	@NotNull
+	@Min(100000)
+	@Max(999999)
 	private Long productId;
+	@NotNull
+	@DecimalMax(value = "9999.999")
 	private Double quantity;
+	@NotNull
+	@DecimalMax(value = "9999.999")
 	private Double pricePerUnit;
+	@Pattern(regexp = "^(Passed|Failed)$", message = "Must be either passed or failed")
 	private String qualityCheck;
+	@NotNull
+	@Future
 	private LocalDate deliveryDate;
+	@NotNull
+	@Future
 	private LocalDate expiryDate;
+	@NotNull
+	@Future
 	private LocalDate manufactureDate;
+	@NotNull
+	@Min(100000)
+	@Max(999999)
 	private Long distributorId;
 
 }
