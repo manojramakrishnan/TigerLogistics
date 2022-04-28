@@ -6,7 +6,7 @@ import com.tigerlogistics.productorder.dto.ProductOrderRequest;
 
 public interface ProductOrderService {
 
-	Map<String,String> create(ProductOrderRequest productOrderRequest);
+	Map<String,String> createProductOrder(ProductOrderRequest productOrderRequest);
 
 
 }
