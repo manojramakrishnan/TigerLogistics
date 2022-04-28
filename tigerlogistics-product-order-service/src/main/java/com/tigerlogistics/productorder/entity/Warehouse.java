@@ -1,27 +1,26 @@
 package com.tigerlogistics.productorder.entity;
 
-import static javax.persistence.GenerationType.SEQUENCE;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-
+import javax.persistence.GenerationType;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Warehouse {
 
 	@Id
 	@SequenceGenerator(name="warehouse_id_sequence",initialValue=10000,allocationSize=1)
-	@GeneratedValue(generator="warehouse_id_sequence",strategy=SEQUENCE)
+	@GeneratedValue(generator="warehouse_id_sequence",strategy=GenerationType.SEQUENCE)
 	private Long warehouseId;
 	private String name;
 	private String description;
