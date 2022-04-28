@@ -28,7 +28,7 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 	public Map<String,String> create(ProductOrderRequest productOrderRequest) {
 		// TODO Auto-generated method stub
 		return Collections.singletonMap("productOrderId", this.orderRepository.save(ProductOrderMapper
-				.DtoToEntity(productOrderRequest)).getProductOrderId().String());
+				.DtoToEntity(productOrderRequest)).getProductOrderId().toString());
 	}
 
 }
