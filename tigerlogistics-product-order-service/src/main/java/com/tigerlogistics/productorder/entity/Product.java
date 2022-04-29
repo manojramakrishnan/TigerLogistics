@@ -29,7 +29,7 @@ public class Product {
 	private Long productId;
 	private String materialName;
 	private String description;
-	private Double quatityAvailable;
+	private Double quantityAvailable;
 	@Enumerated(EnumType.STRING)
 	private MeasurementUnit quantityUnit;
 	@ManyToOne

@@ -42,7 +42,7 @@ public class ProductOrderRequest {
 	@Future
 	private LocalDate expiryDate;
 	@NotNull
-	@Future
+	@Past
 	private LocalDate manufactureDate;
 	@NotNull
 	@Min(100000)
