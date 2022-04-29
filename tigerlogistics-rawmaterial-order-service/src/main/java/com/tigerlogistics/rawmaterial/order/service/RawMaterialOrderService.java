@@ -1,5 +1,9 @@
 package com.tigerlogistics.rawmaterial.order.service;
 
-public interface RawMaterialOrderService {
+import java.util.Map;
 
+import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
+
+public interface RawMaterialOrderService {
+	Map<String,String> createOrder(RawMaterialOrderRequest rawMaterialOrderRequest);
 }

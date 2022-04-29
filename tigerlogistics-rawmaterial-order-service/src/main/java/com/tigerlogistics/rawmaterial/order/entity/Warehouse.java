@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Supplier {
+public class Warehouse {
 	@Id
-	@SequenceGenerator(name = "supplier_id_sequence", initialValue = 100000, allocationSize = 1)
-	@GeneratedValue(generator = "supplier_id_sequence", strategy = GenerationType.SEQUENCE)
-	private Long supplierId;
+	@SequenceGenerator(name = "warehouse_id_sequence", initialValue = 100000, allocationSize = 1)
+	@GeneratedValue(generator = "warehouse_id_sequence", strategy = GenerationType.SEQUENCE)
+
+	private Long warehouseId;
 	private String name;
-	private String location;
-	private String phoneNo;
+	private String description;
 
 }
