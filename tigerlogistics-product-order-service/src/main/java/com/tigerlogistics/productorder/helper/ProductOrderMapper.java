@@ -2,6 +2,7 @@ package com.tigerlogistics.productorder.helper;
 
 import java.time.LocalDate;
 
+import com.tigerlogistics.productorder.dto.ProductDetailsDTO;
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
 import com.tigerlogistics.productorder.entity.Distributor;
 import com.tigerlogistics.productorder.enums.OrderStatus;
@@ -30,4 +31,11 @@ public class ProductOrderMapper {
 		return order;
 	}
 
+	public static ProductDetailsDTO productDetailsToDto(Product product) {
+		// TODO Auto-generated method stub
+		
+		return ProductDetailsDTO.builder().productId(product.getProductId()).materialName(product.getMaterialName()).description(product.getDescription()).
+				quantityAvailable(product.getQuantityAvailable()).quantityUnit(product.getQuantityUnit()).warehouse(product.getWarehouse()).build();
+		
+	}
 }
