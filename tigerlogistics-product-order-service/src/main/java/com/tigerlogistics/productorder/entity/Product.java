@@ -17,10 +17,10 @@ import com.tigerlogistics.productorder.enums.MeasurementUnit;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Entity
 public class Product {
 
 	@Id
