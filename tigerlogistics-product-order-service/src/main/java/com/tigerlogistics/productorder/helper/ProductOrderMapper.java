@@ -31,11 +31,13 @@ public class ProductOrderMapper {
 		return order;
 	}
 
-	public static ProductDetailsDTO productDetailsToDto(Product product) {
+	public static ProductDetailsDTO orderDetailstoDto(ProductOrder product) {
 		// TODO Auto-generated method stub
 		
-		return ProductDetailsDTO.builder().productId(product.getProductId()).materialName(product.getMaterialName()).description(product.getDescription()).
-				quantityAvailable(product.getQuantityAvailable()).quantityUnit(product.getQuantityUnit()).warehouse(product.getWarehouse()).build();
+		return ProductDetailsDTO.builder().productOrderId(product.getProductOrderId()).quantity(product.getQuantity()).pricePerUnit(product.getPricePerUnit()).
+				qualityCheck(product.getQualityCheck()).orderStatus(product.getOrderStatus()).deliveryDate(product.getDeliveryDate())
+				.manufactureDate(product.getManufactureDate()).expiryDate(product.getExpiryDate()).orderedOn(product.getOrderedOn())
+				.build();
 		
 	}
 }

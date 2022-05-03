@@ -10,7 +10,7 @@ public interface ProductOrderService {
 
 	Map<String,String> createProductOrder(ProductOrderRequest productOrderRequest);
 
-	List<ProductDetailsDTO> fetchAllProducts();
+	List<ProductDetailsDTO> fetchAllProductOrders();
 
 
 }

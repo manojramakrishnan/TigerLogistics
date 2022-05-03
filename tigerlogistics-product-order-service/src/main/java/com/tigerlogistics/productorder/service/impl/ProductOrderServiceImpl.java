@@ -38,10 +38,9 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 
 
 	@Override
-	@Transactional(readOnly = true)
-	public List<ProductDetailsDTO> fetchAllProducts() {
+	public List<ProductDetailsDTO> fetchAllProductOrders() {
 		// TODO Auto-generated method stub
-		return productDetailsRepository.findAll().stream().map(ProductOrderMapper::productDetailsToDto).collect(Collectors.toList());
+		return productDetailsRepository.findAll().stream().map(ProductOrderMapper::orderDetailstoDto).collect(Collectors.toList());
 	}
 
 

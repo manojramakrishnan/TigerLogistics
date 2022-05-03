@@ -1,7 +1,11 @@
 package com.tigerlogistics.productorder.dto;
 
-import com.tigerlogistics.productorder.entity.Warehouse;
-import com.tigerlogistics.productorder.enums.MeasurementUnit;
+import java.time.LocalDate;
+
+import com.tigerlogistics.productorder.entity.Distributor;
+import com.tigerlogistics.productorder.entity.Product;
+import com.tigerlogistics.productorder.enums.OrderStatus;
+import com.tigerlogistics.productorder.enums.QualityCheck;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,11 +18,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProductDetailsDTO {
 
-	private Long productId;
-	private String materialName;
-	private String description;
-	private Double quantityAvailable;
-	private MeasurementUnit quantityUnit;
-	private Warehouse warehouse;
-
+	private Long productOrderId;
+	private Double quantity;
+	private Double pricePerUnit;
+	private QualityCheck qualityCheck;
+	private OrderStatus orderStatus;
+	private LocalDate deliveryDate;
+	private LocalDate manufactureDate;
+	private LocalDate expiryDate;
+	private LocalDate orderedOn;
+	
 }

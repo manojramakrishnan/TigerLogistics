@@ -32,9 +32,9 @@ public class ProductOrderController {
 				.body(this.productOrderService.createProductOrder(productOrderRequest));
 	}
 	
-	@GetMapping("/fetchallproduct")
-    public ResponseEntity<List<ProductDetailsDTO>> fetchAllProducts(){
-		return ResponseEntity.status(HttpStatus.OK).body(productOrderService.fetchAllProducts()); 
+	@GetMapping
+    public ResponseEntity<List<ProductDetailsDTO>> fetchAllProductOrders(){
+		return ResponseEntity.status(HttpStatus.OK).body(productOrderService.fetchAllProductOrders()); 
     	
     }
 
