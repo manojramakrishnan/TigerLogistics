@@ -24,7 +24,7 @@ import com.tigerlogistics.productorder.service.ProductOrderService;
 public class ProductOrderController {
   
   @Autowired
-	ProductOrderService productOrderService;
+  ProductOrderService productOrderService;
 
 	@PostMapping
 	public ResponseEntity<Map<String, String>> createProductOrderRequest(
@@ -34,7 +34,7 @@ public class ProductOrderController {
 	}
 	
 	@GetMapping
-    public ResponseEntity<List<ProductOrderResponse>> fetchAllProductOrders(){
+    	public ResponseEntity<List<ProductOrderResponse>> fetchAllProductOrders(){
 		return ResponseEntity.status(HttpStatus.OK).body(this.productOrderService.fetchAllProductOrders()); 
     	
     }
