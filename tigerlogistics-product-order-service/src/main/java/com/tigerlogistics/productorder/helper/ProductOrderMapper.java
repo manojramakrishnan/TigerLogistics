@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.tigerlogistics.productorder.dto.ProductDetailsDTO;
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
+import com.tigerlogistics.productorder.dto.ProductOrderResponse;
 import com.tigerlogistics.productorder.entity.Distributor;
 import com.tigerlogistics.productorder.enums.OrderStatus;
 import com.tigerlogistics.productorder.entity.Product;
@@ -31,7 +32,7 @@ public class ProductOrderMapper {
 		return order;
 	}
 
-	public static ProductDetailsDTO orderDetailstoDto(ProductOrder product) {
+	public static ProductDetailsDTO ToDto(ProductOrder product) {
 		// TODO Auto-generated method stub
 		
 		return ProductDetailsDTO.builder().productOrderId(product.getProductOrderId()).quantity(product.getQuantity()).pricePerUnit(product.getPricePerUnit()).
@@ -40,4 +41,26 @@ public class ProductOrderMapper {
 				.build();
 		
 	}
+	public static ProductOrderResponse entityToDto(ProductOrder productOrder) {
+		return ProductOrderResponse.builder()
+			.productOrderId(productOrder.getProductOrderId())
+			.productId(productOrder.getProduct().getProductId())
+			.quantity(productOrder.getQuantity())
+			.pricePerUnit(productOrder.getPricePerUnit())
+			.qualityCheck(productOrder.getQualityCheck())
+			.orderStatus(productOrder.getOrderStatus())
+			.deliveryDate(productOrder.getDeliveryDate())
+			.manufactureDate(productOrder.getManufactureDate())
+			.expiryDate(productOrder.getExpiryDate())
+			.orderedOn(productOrder.getOrderedOn())
+			.distributorName(productOrder.getDistributor().getName())
+			.distributorId(productOrder.getDistributor().getDistributorId())
+			.productName(productOrder.getProduct().getMaterialName())
+			.description(productOrder.getProduct().getDescription())
+			.measurementUnit(productOrder.getProduct().getQuantityUnit())
+			.warehouse(productOrder.getProduct().getWarehouse())
+			.build();
+	}
+
+
 }

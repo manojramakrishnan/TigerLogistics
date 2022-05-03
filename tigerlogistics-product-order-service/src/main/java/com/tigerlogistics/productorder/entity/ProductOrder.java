@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.tigerlogistics.productorder.enums.MeasurementUnit;
 import com.tigerlogistics.productorder.enums.OrderStatus;
 import com.tigerlogistics.productorder.enums.QualityCheck;
 
@@ -40,6 +42,8 @@ public class ProductOrder {
 	private LocalDate manufactureDate;
 	private LocalDate expiryDate;
 	private LocalDate orderedOn;
+	@Enumerated(EnumType.STRING)
+	private MeasurementUnit measurementUnit;
 	@ManyToOne
   	@JoinColumn(name = "distributorId", referencedColumnName = "distributorId", foreignKey = @ForeignKey(name = "FK_product_distributor_ID"))
 	private Distributor distributor;

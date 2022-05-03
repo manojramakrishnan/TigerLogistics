@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tigerlogistics.productorder.dto.ProductDetailsDTO;
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
+import com.tigerlogistics.productorder.dto.ProductOrderResponse;
 import com.tigerlogistics.productorder.helper.ProductOrderMapper;
 import com.tigerlogistics.productorder.repository.ProductDetailsRepository;
 import com.tigerlogistics.productorder.repository.ProductOrderRepository;
@@ -25,8 +26,6 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 	@Autowired
 	private ProductOrderRepository orderRepository;
 	
-	@Autowired
-	private ProductDetailsRepository productDetailsRepository;
 	
 	
 	@Override
@@ -38,9 +37,9 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 
 
 	@Override
-	public List<ProductDetailsDTO> fetchAllProductOrders() {
+	public List<ProductOrderResponse> fetchAllProductOrders() {
 		// TODO Auto-generated method stub
-		return productDetailsRepository.findAll().stream().map(ProductOrderMapper::orderDetailstoDto).collect(Collectors.toList());
+		return orderRepository.findAll().stream().map(ProductOrderMapper::entityToDto).collect(Collectors.toList());
 	}
 
 
