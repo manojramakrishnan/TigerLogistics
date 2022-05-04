@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.productorder.dto.ProductDetailsDTO;
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
+import com.tigerlogistics.productorder.dto.ProductOrderResponse;
 import com.tigerlogistics.productorder.service.ProductOrderService;
 
 @RestController
@@ -23,7 +24,7 @@ import com.tigerlogistics.productorder.service.ProductOrderService;
 public class ProductOrderController {
   
   @Autowired
-	ProductOrderService productOrderService;
+  ProductOrderService productOrderService;
 
 	@PostMapping
 	public ResponseEntity<Map<String, String>> createProductOrderRequest(
@@ -32,9 +33,9 @@ public class ProductOrderController {
 				.body(this.productOrderService.createProductOrder(productOrderRequest));
 	}
 	
-	@GetMapping("/fetchallproduct")
-    public ResponseEntity<List<ProductDetailsDTO>> fetchAllProducts(){
-		return ResponseEntity.status(HttpStatus.OK).body(productOrderService.fetchAllProducts()); 
+	@GetMapping
+    	public ResponseEntity<List<ProductOrderResponse>> fetchAllProductOrders(){
+		return ResponseEntity.status(HttpStatus.OK).body(this.productOrderService.fetchAllProductOrders()); 
     	
     }
 

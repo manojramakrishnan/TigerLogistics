@@ -5,12 +5,13 @@ import java.util.Map;
 
 import com.tigerlogistics.productorder.dto.ProductDetailsDTO;
 import com.tigerlogistics.productorder.dto.ProductOrderRequest;
+import com.tigerlogistics.productorder.dto.ProductOrderResponse;
 
 public interface ProductOrderService {
 
 	Map<String,String> createProductOrder(ProductOrderRequest productOrderRequest);
 
-	List<ProductDetailsDTO> fetchAllProducts();
+	List<ProductOrderResponse> fetchAllProductOrders();
 
 
 }
