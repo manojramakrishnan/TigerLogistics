@@ -32,7 +32,7 @@ public class RawMaterialMapper {
 	public static RawMaterialOrderDto orderDetailstoDto(RawMaterialOrder rawMaterialOrder) {
 		return RawMaterialOrderDto.builder().rawMaterialOrderId(rawMaterialOrder.getRawMaterialOrderId()).quantity(rawMaterialOrder.getQuantity())
 				.pricePerUnit(rawMaterialOrder.getPricePerUnit()).qualityCheck(rawMaterialOrder.getQualityCheck()).orderStatus(rawMaterialOrder.getOrderStatus())
-				.deliveryDate(rawMaterialOrder.getDeliveryDate()).expiryDate(rawMaterialOrder.getExpiryDate()).orderedOn(rawMaterialOrder.getOrderedOn()).build();
+				.deliveryDate(rawMaterialOrder.getDeliveryDate()).expiryDate(rawMaterialOrder.getExpiryDate()).orderedOn(rawMaterialOrder.getOrderedOn()).supplier(rawMaterialOrder.getSupplier()).rawMaterial(rawMaterialOrder.getRawMaterial()).build();
 		
 	}
 }
