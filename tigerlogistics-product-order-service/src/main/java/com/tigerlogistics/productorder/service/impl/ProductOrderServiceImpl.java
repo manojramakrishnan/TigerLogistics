@@ -43,6 +43,13 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 	}
 
 
+	@Override
+	public ProductOrderResponse fetchProductById(long productOrderId) {
+		// TODO Auto-generated method stub
+		return ProductOrderMapper.entityToDto(orderRepository.findProductById(productOrderId));
+	}
+
+
 	
 	
 

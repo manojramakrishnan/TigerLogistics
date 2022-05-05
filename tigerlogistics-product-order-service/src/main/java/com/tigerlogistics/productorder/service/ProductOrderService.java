@@ -13,5 +13,7 @@ public interface ProductOrderService {
 
 	List<ProductOrderResponse> fetchAllProductOrders();
 
+	ProductOrderResponse fetchProductById(long productOrderId);
+
 
 }
