@@ -10,9 +10,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderDto;
+//import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderDto;
 //import com.tigerlogistics.auth.helper.UserDetailMapper;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
+import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
 import com.tigerlogistics.rawmaterial.order.helper.RawMaterialMapper;
 import com.tigerlogistics.rawmaterial.order.repository.RawMaterialOrderRepository;
 import com.tigerlogistics.rawmaterial.order.service.RawMaterialOrderService;
@@ -27,14 +28,15 @@ public class RawMaterialOrderServiceImpl implements RawMaterialOrderService {
 	}
 	@Override
 
-	public List<RawMaterialOrderDto> fetchAllOrders() {
-		return repository.findAll().stream().map(RawMaterialMapper::orderDetailstoDto).collect(Collectors.toList());
+	public List<RawMaterialOrderResponse> fetchAllOrders() {
+		RawMaterialMapper mapper=new RawMaterialMapper();
+		return this.repository.findAll().stream().map(mapper::entityToDto).collect(Collectors.toList());
 	}
 	@Override
-	public RawMaterialOrderDto fetchRawMaterialOrderByID(long rawMaterialOrderId) {
+	public RawMaterialOrderResponse fetchRawMaterialOrderByID(long rawMaterialOrderId) {
 		// TODO Auto-generated method stub
-		return RawMaterialMapper.orderDetailstoDto(repository.findByRawMaterialOrderId(rawMaterialOrderId));
-	}
+		RawMaterialMapper mapper=new RawMaterialMapper();
+		return mapper.entityToDto(this.repository.findByRawMaterialOrderId(rawMaterialOrderId));	}
 	
 
 }
