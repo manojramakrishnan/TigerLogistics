@@ -39,7 +39,7 @@ public class ProductOrderController {
     	
     }
 
-	@GetMapping("/fetchproductbyid/{productOrderId}")
+	@GetMapping("/{productOrderId}")
 	public ResponseEntity<ProductOrderResponse> fetchProductsById(@PathVariable  long productOrderId){
 		return ResponseEntity.status(HttpStatus.OK).body(this.productOrderService.fetchProductById(productOrderId));
 	}
