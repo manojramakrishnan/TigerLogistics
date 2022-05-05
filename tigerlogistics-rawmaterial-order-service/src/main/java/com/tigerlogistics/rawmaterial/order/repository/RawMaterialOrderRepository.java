@@ -7,6 +7,6 @@ import com.tigerlogistics.rawmaterial.order.entity.RawMaterialOrder;
 
 @Repository
 public interface RawMaterialOrderRepository extends JpaRepository<RawMaterialOrder,Long>{
-	
+	RawMaterialOrder findByRawMaterialOrderId(long rawMaterialOrderId);
 
 }

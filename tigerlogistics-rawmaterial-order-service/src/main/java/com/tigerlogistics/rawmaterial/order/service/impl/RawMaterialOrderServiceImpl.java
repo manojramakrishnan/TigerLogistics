@@ -30,6 +30,11 @@ public class RawMaterialOrderServiceImpl implements RawMaterialOrderService {
 	public List<RawMaterialOrderDto> fetchAllOrders() {
 		return repository.findAll().stream().map(RawMaterialMapper::orderDetailstoDto).collect(Collectors.toList());
 	}
+	@Override
+	public RawMaterialOrderDto fetchRawMaterialOrderByID(long rawMaterialOrderId) {
+		// TODO Auto-generated method stub
+		return RawMaterialMapper.orderDetailstoDto(repository.findByRawMaterialOrderId(rawMaterialOrderId));
+	}
 	
 
 }

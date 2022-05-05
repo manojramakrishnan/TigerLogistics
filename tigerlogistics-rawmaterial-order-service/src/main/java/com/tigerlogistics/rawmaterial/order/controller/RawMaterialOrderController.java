@@ -28,5 +28,10 @@ public class RawMaterialOrderController {
 	}
 	@GetMapping("/fetchAllOrders")
 	public ResponseEntity<List<RawMaterialOrderDto>> fetchAllOrders(){
-		return ResponseEntity.status(HttpStatus.OK).body(rawMaterialOrderService.fetchAllOrders());	}
+		return ResponseEntity.status(HttpStatus.OK).body(rawMaterialOrderService.fetchAllOrders());
+		}
+	@GetMapping("/{rawMaterialOrderId}")
+	public ResponseEntity<RawMaterialOrderDto> fetchRawMaterialOrderById(long rawMaterialOrderId){
+		return ResponseEntity.status(HttpStatus.OK).body(rawMaterialOrderService.fetchRawMaterialOrderByID(rawMaterialOrderId));
+	}
 }

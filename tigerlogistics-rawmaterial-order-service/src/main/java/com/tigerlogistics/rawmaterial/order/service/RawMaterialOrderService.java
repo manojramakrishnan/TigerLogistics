@@ -10,4 +10,6 @@ public interface RawMaterialOrderService {
 	Map<String,String> createOrder(RawMaterialOrderRequest rawMaterialOrderRequest);
 
 	List<RawMaterialOrderDto> fetchAllOrders();
+
+	RawMaterialOrderDto fetchRawMaterialOrderByID(long rawMaterialOrderId);
 }
