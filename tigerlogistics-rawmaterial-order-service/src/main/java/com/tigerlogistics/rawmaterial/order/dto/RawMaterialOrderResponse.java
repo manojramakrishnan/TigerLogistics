@@ -28,7 +28,7 @@ public class RawMaterialOrderResponse {
 	private String supplierName;
 	private String materialName;
 	private String description;
-	private MeasurementUnit measurmentUnit;
+	private MeasurementUnit measurementUnit;
 	private Warehouse warehouse; 
 
 }

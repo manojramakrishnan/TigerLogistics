@@ -45,7 +45,7 @@ public class RawMaterialMapper {
 			      .supplierName(rawMaterialOrder.getSupplier().getName())
 			      .supplierId(rawMaterialOrder.getSupplier().getSupplierId())
 			      .warehouse(rawMaterialOrder.getRawMaterial().getWarehouse())
-			      .measurmentUnit(rawMaterialOrder.getRawMaterial().getQuantityUnit())
+			      .measurementUnit(rawMaterialOrder.getRawMaterial().getQuantityUnit())
 			      .description(rawMaterialOrder.getRawMaterial().getDescription())
 			      .build();
 	}
