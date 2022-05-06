@@ -3,13 +3,13 @@ package com.tigerlogistics.rawmaterial.order.service;
 import java.util.List;
 import java.util.Map;
 
-import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderDto;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
+import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
 
 public interface RawMaterialOrderService {
 	Map<String,String> createOrder(RawMaterialOrderRequest rawMaterialOrderRequest);
 
-	List<RawMaterialOrderDto> fetchAllOrders();
+	List<RawMaterialOrderResponse> fetchAllOrders();
 
-	RawMaterialOrderDto fetchRawMaterialOrderByID(long rawMaterialOrderId);
+	RawMaterialOrderResponse fetchRawMaterialOrderByID(long rawMaterialOrderId);
 }
