@@ -1,5 +1,5 @@
 package com.tigerlogistics.supplier.repository;
 
-public interface SupplierRepository {
-
+public interface SupplierRepository{
+	
 }

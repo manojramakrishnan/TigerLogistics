@@ -1,5 +1,6 @@
 package com.tigerlogistics.supplier.entity;
 
-public class Supplier {
+import javax.persistence.Entity;
 
+public class Supplier {
 }
