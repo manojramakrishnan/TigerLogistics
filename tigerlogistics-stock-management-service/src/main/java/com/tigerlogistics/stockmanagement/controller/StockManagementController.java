@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tigerlogistics.stockmanagement.dto.ProductAddRequest;
 import com.tigerlogistics.stockmanagement.entity.Product;
 import com.tigerlogistics.stockmanagement.service.StockManagementService;
 
