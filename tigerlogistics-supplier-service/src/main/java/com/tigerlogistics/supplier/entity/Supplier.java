@@ -2,8 +2,6 @@ package com.tigerlogistics.supplier.entity;
 
 import javax.persistence.Entity;
 
-import com.tigerlogistics.supplier.dto.SupplierDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class Supplier {
 	private Long SupplierId;
 	private String Name;
