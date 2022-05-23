@@ -16,9 +16,9 @@ public class SupplierDetailsMapper {
 
 	public static Supplier supplierDtoToEntity(SupplierDto supplierDto) {
 		// TODO Auto-generated method stub
-		return Supplier.builder().Name(supplierDto.getName())
-				.SupplierId(supplierDto.getSupplierId() != null ? supplierDto.getSupplierId() : null)
-				.Location(supplierDto.getLocation()).PhoneNo(supplierDto.getPhoneNo()).build();
+		return Supplier.builder().name(supplierDto.getName())
+				.supplierId(supplierDto.getSupplierId() != null ? supplierDto.getSupplierId() : null)
+				.location(supplierDto.getLocation()).phoneNo(supplierDto.getPhoneNo()).build();
 	}
 
 }
