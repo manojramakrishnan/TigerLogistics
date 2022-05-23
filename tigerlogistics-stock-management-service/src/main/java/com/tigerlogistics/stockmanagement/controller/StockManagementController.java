@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tigerlogistics.stockmanagement.dto.ProductAddRequest;
 import com.tigerlogistics.stockmanagement.entity.Product;
 import com.tigerlogistics.stockmanagement.service.StockManagementService;
 
 
 @RestController
-@RequestMapping("/stockManagement")
+@RequestMapping("/productStock")
 @CrossOrigin(origins = "*")
 public class StockManagementController {
 
@@ -25,10 +24,10 @@ public class StockManagementController {
 	  StockManagementService stockManagementService;
 	 
 	 @PostMapping
-		public ResponseEntity<Map<String, String>> addProduct(
-				 @RequestBody ProductAddRequest productAddRequest) {
-			return ResponseEntity.status(HttpStatus.CREATED)
-					.body(this.stockManagementService.addProduct(productAddRequest));
+		public ResponseEntity<Product> addProduct(
+				 @RequestBody Product product) {
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(this.stockManagementService.addProduct(product));
 		}
 
 }
