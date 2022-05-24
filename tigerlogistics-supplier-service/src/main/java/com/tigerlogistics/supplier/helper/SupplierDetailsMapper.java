@@ -20,5 +20,6 @@ public class SupplierDetailsMapper {
 				.supplierId(supplierDto.getSupplierId() != null ? supplierDto.getSupplierId() : null)
 				.location(supplierDto.getLocation()).phoneNo(supplierDto.getPhoneNo()).build();
 	}
+	
 
 }

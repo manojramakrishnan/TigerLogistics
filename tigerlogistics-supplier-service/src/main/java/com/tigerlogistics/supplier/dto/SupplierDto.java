@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SupplierDto {
-	private Long SupplierId;
-	private String Name;
-	private String Location;
-	private String PhoneNo;
+	private Long supplierId;
+	private String name;
+	private String location;
+	private String phoneNo;
 	
 }

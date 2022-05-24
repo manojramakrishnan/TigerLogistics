@@ -11,4 +11,5 @@ import com.tigerlogistics.supplier.entity.Supplier;
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier,Long>{
 	Supplier findBySupplierId(Long SupplierId);
+	
 }

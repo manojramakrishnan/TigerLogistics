@@ -1,5 +1,7 @@
 package com.tigerlogistics.supplier.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,11 @@ public class SupplierServiceImpl implements SupplierService {
 
 		return supplierRepository.save(SupplierDetailsMapper.supplierDtoToEntity(supplierDto));
 
+	}
+
+	@Override
+	public List<Supplier> fetchAllSupplier() {
+		// TODO Auto-generated method stub
+		return supplierRepository.findAll();
 	}
 }
