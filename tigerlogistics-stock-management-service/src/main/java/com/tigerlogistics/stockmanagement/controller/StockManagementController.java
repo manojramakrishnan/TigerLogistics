@@ -31,8 +31,8 @@ public class StockManagementController {
 					.body(this.stockManagementService.addProduct(product));
 		}
 		@GetMapping("/{productId}")
-		public ResponseEntity<ProductDto> fetchProductsById(@PathVariable  long id){
-			return ResponseEntity.status(HttpStatus.OK).body(this.stockManagementService.fetchProductById(id));
+		public ResponseEntity<ProductDto> fetchProductsById(@PathVariable  long productId){
+			return ResponseEntity.status(HttpStatus.OK).body(this.stockManagementService.fetchProductById(productId));
 		}
 
 

@@ -9,6 +9,6 @@ public interface StockManagementService {
 
 	Product addProduct(Product product);
 
-	ProductDto fetchProductById(long id);
+	ProductDto fetchProductById(long productId);
 
 }
