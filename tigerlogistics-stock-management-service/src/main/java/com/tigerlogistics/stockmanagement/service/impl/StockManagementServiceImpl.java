@@ -1,5 +1,8 @@
 package com.tigerlogistics.stockmanagement.service.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,12 @@ public class StockManagementServiceImpl implements StockManagementService{
 	public ProductDto fetchProductById(long productId) {
 		// TODO Auto-generated method stub
 		return StockDetailMapper.entityToDto(stockManagementRepository.findProductById(productId));
+	}
+
+	@Override
+	public List<ProductDto> findAllProducts() {
+		// TODO Auto-generated method stub
+		return stockManagementRepository.findAll().stream().map(StockDetailMapper::entityToDto).collect(Collectors.toList());
 	}
 
 }
