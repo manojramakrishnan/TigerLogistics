@@ -1,5 +1,7 @@
 package com.tigerlogistics.stockmanagement.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,5 +34,9 @@ public class ProductController {
 	 public ResponseEntity<ProductDto> fetchProductsById(@PathVariable long productId){
 		return ResponseEntity.status(HttpStatus.OK).body(this.productService.fetchProductsById(productId));
 		 
+	 }
+	 @GetMapping
+	 public ResponseEntity<List<ProductDto>> fetchAllProducts(){
+		 return ResponseEntity.status(HttpStatus.OK).body(this.productService.findAllProducts());
 	 }
 }
