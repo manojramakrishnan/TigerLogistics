@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
+import com.tigerlogistics.rawmaterial.order.dto.UpdateStatusDTO;
 import com.tigerlogistics.rawmaterial.order.service.RawMaterialOrderService;
 @RestController
 @RequestMapping("/rawMaterialOrder")
@@ -34,5 +36,10 @@ public class RawMaterialOrderController {
 	@GetMapping("/{rawMaterialOrderId}")
 	public ResponseEntity<RawMaterialOrderResponse> fetchRawMaterialOrderById(@PathVariable long rawMaterialOrderId){
 		return ResponseEntity.status(HttpStatus.OK).body(this.rawMaterialOrderService.fetchRawMaterialOrderByID(rawMaterialOrderId));
+	}
+	@PutMapping
+	public ResponseEntity<RawMaterialOrderResponse> updateDeliveryStatus(@RequestBody UpdateStatusDTO updateStatusDTO){
+		
+		return ResponseEntity.status(HttpStatus.OK).body(this.rawMaterialOrderService.updateRawMaterialOrderDeliveryStatus(updateStatusDTO));		
 	}
 }
