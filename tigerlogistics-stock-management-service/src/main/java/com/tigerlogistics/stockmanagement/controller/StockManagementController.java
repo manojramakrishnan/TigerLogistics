@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.stockmanagement.dto.ProductDto;
 import com.tigerlogistics.stockmanagement.entity.Product;
+import com.tigerlogistics.stockmanagement.entity.ProductStockRequest;
 import com.tigerlogistics.stockmanagement.service.StockManagementService;
 
 
@@ -41,6 +43,11 @@ public class StockManagementController {
 		return ResponseEntity.status(HttpStatus.OK).body(this.stockManagementService.findAllProducts()); 
     	
     }
+		@PutMapping
+		public ResponseEntity<Product> updateProductStock(@RequestBody ProductStockRequest productStockRequest){
+			return ResponseEntity.status(HttpStatus.OK).body(this.stockManagementService.updateProductStock(productStockRequest));
+		}
+		
 
 
 }

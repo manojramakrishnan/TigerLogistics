@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tigerlogistics.stockmanagement.dto.ProductDto;
 import com.tigerlogistics.stockmanagement.entity.Product;
+import com.tigerlogistics.stockmanagement.entity.ProductStockRequest;
 import com.tigerlogistics.stockmanagement.helper.StockDetailMapper;
 import com.tigerlogistics.stockmanagement.repository.StockManagementRepository;
 import com.tigerlogistics.stockmanagement.service.StockManagementService;
@@ -36,6 +37,16 @@ public class StockManagementServiceImpl implements StockManagementService{
 	public List<ProductDto> findAllProducts() {
 		// TODO Auto-generated method stub
 		return stockManagementRepository.findAll().stream().map(StockDetailMapper::entityToDto).collect(Collectors.toList());
+	}
+
+	@Override
+	public Product updateProductStock(ProductStockRequest productStockRequest) {
+		// TODO Auto-generated method stub
+		
+		Product fetchProduct =stockManagementRepository.findProductById(productStockRequest.getProductId());
+		fetchProduct.setQuantityAvailable(fetchProduct.getQuantityAvailable() + productStockRequest.getQuantity());
+		return stockManagementRepository.save(fetchProduct);
+
 	}
 
 }
