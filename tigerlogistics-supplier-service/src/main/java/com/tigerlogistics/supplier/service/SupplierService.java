@@ -15,4 +15,7 @@ public interface SupplierService {
 
 	List<Supplier> fetchAllSupplier();
 
+	Supplier fetchAllSupplierById(long supplierId);
+		
+
 }

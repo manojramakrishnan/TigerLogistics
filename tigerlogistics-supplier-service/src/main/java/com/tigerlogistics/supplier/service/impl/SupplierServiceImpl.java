@@ -28,4 +28,10 @@ public class SupplierServiceImpl implements SupplierService {
 		// TODO Auto-generated method stub
 		return supplierRepository.findAll();
 	}
+
+	@Override
+	public Supplier fetchAllSupplierById(long supplierId) {
+		// TODO Auto-generated method stub
+		return supplierRepository.findBySupplierId(supplierId);
+	}
 }

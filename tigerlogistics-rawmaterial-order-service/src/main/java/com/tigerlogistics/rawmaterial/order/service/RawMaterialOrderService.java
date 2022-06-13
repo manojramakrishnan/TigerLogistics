@@ -5,7 +5,8 @@ import java.util.Map;
 
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
-import com.tigerlogistics.rawmaterial.order.dto.UpdateStatusDTO;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterial;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterialStockRequest;
 
 public interface RawMaterialOrderService {
 	Map<String,String> createOrder(RawMaterialOrderRequest rawMaterialOrderRequest);
@@ -14,5 +15,5 @@ public interface RawMaterialOrderService {
 
 	RawMaterialOrderResponse fetchRawMaterialOrderByID(long rawMaterialOrderId);
 
-	RawMaterialOrderResponse updateRawMaterialOrderDeliveryStatus(UpdateStatusDTO updateStatusDTO);
+	RawMaterial updateRawMaterialOrderDeliveryStatus(RawMaterialStockRequest request);
 }

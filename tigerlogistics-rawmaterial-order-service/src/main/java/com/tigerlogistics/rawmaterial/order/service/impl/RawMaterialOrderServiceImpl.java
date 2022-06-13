@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
 import com.tigerlogistics.rawmaterial.order.dto.UpdateStatusDTO;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterial;
 import com.tigerlogistics.rawmaterial.order.entity.RawMaterialOrder;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterialStockRequest;
 import com.tigerlogistics.rawmaterial.order.enums.OrderStatus;
 import com.tigerlogistics.rawmaterial.order.exception.InvalidOrderUpdateStatusException;
 import com.tigerlogistics.rawmaterial.order.helper.RawMaterialMapper;
 import com.tigerlogistics.rawmaterial.order.repository.RawMaterialOrderRepository;
+import com.tigerlogistics.rawmaterial.order.repository.RawMaterialRepository;
 import com.tigerlogistics.rawmaterial.order.service.RawMaterialOrderService;
 import com.tigerlogistics.rawmaterial.order.service.UpdateRawMaterialOrderService;
 
@@ -27,6 +30,8 @@ public class RawMaterialOrderServiceImpl implements RawMaterialOrderService {
 	private RawMaterialOrderRepository repository;
 	@Autowired
 	private UpdateRawMaterialOrderService updateRawMaterialOrderService;
+	@Autowired
+	private RawMaterialRepository rawMaterialRepository;
 
 	@Override
 	public Map<String, String> createOrder(RawMaterialOrderRequest rawMaterialOrderRequest) {
@@ -48,29 +53,15 @@ public class RawMaterialOrderServiceImpl implements RawMaterialOrderService {
 		return mapper.entityToDto(this.repository.findByRawMaterialOrderId(rawMaterialOrderId));
 	}
 
+	
+
 	@Override
-	public RawMaterialOrderResponse updateRawMaterialOrderDeliveryStatus(UpdateStatusDTO updateStatusDTO) {
+	public RawMaterial updateRawMaterialOrderDeliveryStatus(RawMaterialStockRequest request) {
 		// TODO Auto-generated method stub
-		RawMaterialOrder order = repository.findByRawMaterialOrderId(updateStatusDTO.getOrderId());
-		if (order.getOrderStatus().equals(OrderStatus.Delivered)) {
-			throw new InvalidOrderUpdateStatusException("Status", "rawmaterial already delivered");
-		}
-		if (order.getOrderStatus().equals(OrderStatus.Cancelled)) {
-			throw new InvalidOrderUpdateStatusException("Status", "rawmaterial delivery already cancelled");
-		}
-		if (updateStatusDTO.getStatus().equals(OrderStatus.Delivered.toString())) {
-			order.setOrderStatus(OrderStatus.valueOf(updateStatusDTO.getStatus()));
-		}
-		if (updateStatusDTO.getStatus().equals(OrderStatus.Cancelled.toString())) {
-			order.setOrderStatus(OrderStatus.valueOf(updateStatusDTO.getStatus()));
-		}
-		if (updateRawMaterialOrderService.updateRawMaterialStock(order.getRawMaterial().getRawMaterialId(),
-				order.getQuantity())) {
-			RawMaterialMapper mapper = new RawMaterialMapper();
-			return mapper.entityToDto(this.repository.save(order));
-		} else {
-			throw new RuntimeException("error updating stock");
-		}
+		RawMaterial rawMaterial=rawMaterialRepository.findRawMaterialById(request.getRawMaterialId());
+		
+		rawMaterial.setQuantityAvailabe(rawMaterial.getQuantityAvailabe()+request.getQuantity());
+		return rawMaterialRepository.save(rawMaterial);
 	}
 
 }

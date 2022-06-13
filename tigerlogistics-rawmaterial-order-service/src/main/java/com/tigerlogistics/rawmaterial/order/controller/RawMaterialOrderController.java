@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderRequest;
 import com.tigerlogistics.rawmaterial.order.dto.RawMaterialOrderResponse;
 import com.tigerlogistics.rawmaterial.order.dto.UpdateStatusDTO;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterial;
+import com.tigerlogistics.rawmaterial.order.entity.RawMaterialStockRequest;
 import com.tigerlogistics.rawmaterial.order.service.RawMaterialOrderService;
 @RestController
 @RequestMapping("/rawMaterialOrder")
@@ -38,8 +40,8 @@ public class RawMaterialOrderController {
 		return ResponseEntity.status(HttpStatus.OK).body(this.rawMaterialOrderService.fetchRawMaterialOrderByID(rawMaterialOrderId));
 	}
 	@PutMapping
-	public ResponseEntity<RawMaterialOrderResponse> updateDeliveryStatus(@RequestBody UpdateStatusDTO updateStatusDTO){
+	public ResponseEntity<RawMaterial> updateDeliveryStatus(@RequestBody RawMaterialStockRequest rawMaterialStockRequest){
 		
-		return ResponseEntity.status(HttpStatus.OK).body(this.rawMaterialOrderService.updateRawMaterialOrderDeliveryStatus(updateStatusDTO));		
+		return ResponseEntity.status(HttpStatus.OK).body(this.rawMaterialOrderService.updateRawMaterialOrderDeliveryStatus(rawMaterialStockRequest));		
 	}
 }
