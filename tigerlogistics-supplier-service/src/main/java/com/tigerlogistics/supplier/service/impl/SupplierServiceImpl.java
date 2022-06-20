@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tigerlogistics.supplier.dto.SupplierDto;
+import com.tigerlogistics.supplier.dto.UpdateSupplierDto;
 import com.tigerlogistics.supplier.entity.Supplier;
 import com.tigerlogistics.supplier.helper.SupplierDetailsMapper;
 import com.tigerlogistics.supplier.repository.SupplierRepository;
@@ -33,5 +34,17 @@ public class SupplierServiceImpl implements SupplierService {
 	public Supplier fetchAllSupplierById(long supplierId) {
 		// TODO Auto-generated method stub
 		return supplierRepository.findBySupplierId(supplierId);
+	}
+
+	@Override
+	public void updateSupplier(UpdateSupplierDto updateSupplierDto) {
+		Supplier supplier=supplierRepository.findBySupplierId(updateSupplierDto.getSupplierId());
+		supplier.setLocation(updateSupplierDto.getLocation());
+		supplier.setName(updateSupplierDto.getName());
+		supplier.setPhoneNo(updateSupplierDto.getPhoneNo());
+		supplierRepository.save(supplier);
+		
+		
+		
 	}
 }

@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.supplier.dto.SupplierDto;
+import com.tigerlogistics.supplier.dto.UpdateSupplierDto;
 import com.tigerlogistics.supplier.entity.Supplier;
 import com.tigerlogistics.supplier.service.SupplierService;
 
@@ -39,4 +41,11 @@ public class SupplierController {
 		return ResponseEntity.status(HttpStatus.OK).body(supplierService.fetchAllSupplierById(supplierId));
 		
 	}
+	@PutMapping
+	public ResponseEntity<String> updateSupplier(@RequestBody UpdateSupplierDto updateSupplierDto){
+		supplierService.updateSupplier(updateSupplierDto);
+		return ResponseEntity.status(HttpStatus.OK).body("success");
+		 
+	}
 }
+
