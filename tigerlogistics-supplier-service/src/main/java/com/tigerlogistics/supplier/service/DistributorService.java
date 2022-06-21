@@ -11,4 +11,6 @@ public interface DistributorService {
 
 	List<Distributor> fetchAllDistributor();
 
+	DistributorDto fetchDistributorById(long distributorId);
+
 }

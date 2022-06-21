@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.tigerlogistics.supplier.dto.DistributorDto;
 import com.tigerlogistics.supplier.entity.Distributor;
 import com.tigerlogistics.supplier.helper.DistributorDetailsMapper;
-import com.tigerlogistics.supplier.helper.SupplierDetailsMapper;
 import com.tigerlogistics.supplier.repository.DistributorRepository;
 import com.tigerlogistics.supplier.service.DistributorService;
 
@@ -30,6 +29,12 @@ public class DistributorServiceImpl implements DistributorService{
 	public List<Distributor> fetchAllDistributor() {
 		// TODO Auto-generated method stub
 		return distributorRepository.findAll();
+	}
+
+	@Override
+	public DistributorDto fetchDistributorById(long distributorId) {
+		// TODO Auto-generated method stub
+		return DistributorDetailsMapper.entityToDto(distributorRepository.findDistributorById(distributorId));
 	}
 
 }
