@@ -1,4 +1,4 @@
-package com.tigerlogistics.productorder.controller;
+package com.tigerlogistics.supplier.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tigerlogistics.productorder.dto.WarehouseDto;
-import com.tigerlogistics.productorder.entity.Warehouse;
-import com.tigerlogistics.productorder.service.WarehouseService;
+import com.tigerlogistics.supplier.dto.WarehouseDto;
+import com.tigerlogistics.supplier.entity.Warehouse;
+import com.tigerlogistics.supplier.service.WarehouseService;
 
 @RestController
 @RequestMapping("/warehouse")

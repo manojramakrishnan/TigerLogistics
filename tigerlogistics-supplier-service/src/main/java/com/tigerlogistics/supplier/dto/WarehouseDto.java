@@ -1,9 +1,4 @@
-package com.tigerlogistics.productorder.dto;
-
-import java.time.LocalDate;
-
-import com.tigerlogistics.productorder.enums.OrderStatus;
-import com.tigerlogistics.productorder.enums.QualityCheck;
+package com.tigerlogistics.supplier.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

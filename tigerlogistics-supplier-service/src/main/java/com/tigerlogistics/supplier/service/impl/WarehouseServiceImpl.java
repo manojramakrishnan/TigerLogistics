@@ -1,13 +1,13 @@
-package com.tigerlogistics.productorder.service.impl;
+package com.tigerlogistics.supplier.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tigerlogistics.productorder.dto.WarehouseDto;
-import com.tigerlogistics.productorder.entity.Warehouse;
-import com.tigerlogistics.productorder.helper.WarehouseMapper;
-import com.tigerlogistics.productorder.repository.WarehouseRepository;
-import com.tigerlogistics.productorder.service.WarehouseService;
+import com.tigerlogistics.supplier.dto.WarehouseDto;
+import com.tigerlogistics.supplier.entity.Warehouse;
+import com.tigerlogistics.supplier.helper.WarehouseMapper;
+import com.tigerlogistics.supplier.repository.WarehouseRepository;
+import com.tigerlogistics.supplier.service.WarehouseService;
 
 @Service
 public class WarehouseServiceImpl implements WarehouseService{

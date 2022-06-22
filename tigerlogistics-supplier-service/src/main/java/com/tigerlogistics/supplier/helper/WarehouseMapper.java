@@ -1,7 +1,7 @@
-package com.tigerlogistics.productorder.helper;
+package com.tigerlogistics.supplier.helper;
 
-import com.tigerlogistics.productorder.dto.WarehouseDto;
-import com.tigerlogistics.productorder.entity.Warehouse;
+import com.tigerlogistics.supplier.dto.WarehouseDto;
+import com.tigerlogistics.supplier.entity.Warehouse;
 
 public class WarehouseMapper {
 	public static Warehouse addToWarehouse(WarehouseDto warehouseDto)
