@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.supplier.dto.DistributorDto;
+import com.tigerlogistics.supplier.dto.UpdateSupplierDto;
 import com.tigerlogistics.supplier.entity.Distributor;
 import com.tigerlogistics.supplier.service.DistributorService;
 
@@ -39,6 +41,13 @@ public class DistributorController {
 	@GetMapping("/{distributorId}")
 	public ResponseEntity<DistributorDto> fetchProductsById(@PathVariable  long distributorId){
 		return ResponseEntity.status(HttpStatus.OK).body(this.distributorService.fetchDistributorById(distributorId));
+	}
+	
+	@PutMapping
+	public ResponseEntity<String> updateDistributor(@RequestBody DistributorDto distributorDto){
+		distributorService.updateDistributor(distributorDto);
+		return ResponseEntity.status(HttpStatus.OK).body("success");
+		 
 	}
 	
 }
