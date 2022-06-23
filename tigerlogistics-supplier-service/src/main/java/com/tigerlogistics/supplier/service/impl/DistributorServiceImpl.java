@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tigerlogistics.supplier.dto.DistributorDto;
 import com.tigerlogistics.supplier.entity.Distributor;
+import com.tigerlogistics.supplier.entity.Supplier;
 import com.tigerlogistics.supplier.helper.DistributorDetailsMapper;
 import com.tigerlogistics.supplier.repository.DistributorRepository;
 import com.tigerlogistics.supplier.service.DistributorService;
@@ -35,6 +36,17 @@ public class DistributorServiceImpl implements DistributorService{
 	public DistributorDto fetchDistributorById(long distributorId) {
 		// TODO Auto-generated method stub
 		return DistributorDetailsMapper.entityToDto(distributorRepository.findDistributorById(distributorId));
+	}
+
+	@Override
+	public void updateDistributor(DistributorDto distributorDto) {
+		// TODO Auto-generated method stub
+		Distributor distributor=distributorRepository.findDistributorById(distributorDto.getDistributorId());
+		distributor.setLocation(distributorDto.getLocation());
+		distributor.setName(distributorDto.getName());
+		distributor.setPhoneNo(distributorDto.getPhoneNo());
+		distributorRepository.save(distributor);
+		
 	}
 
 }

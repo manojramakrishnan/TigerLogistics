@@ -13,4 +13,6 @@ public interface DistributorService {
 
 	DistributorDto fetchDistributorById(long distributorId);
 
+	void updateDistributor(DistributorDto distributorDto);
+
 }
