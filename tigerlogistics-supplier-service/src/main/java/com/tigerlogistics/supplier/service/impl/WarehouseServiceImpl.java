@@ -1,5 +1,7 @@
 package com.tigerlogistics.supplier.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,14 @@ public class WarehouseServiceImpl implements WarehouseService{
 
 	@Override
 	public Warehouse addWarehouse(WarehouseDto warehouseDto) {
-		// TODO Auto-generated method stub
+		
 		return warehouseRepository.save(WarehouseMapper.warehouseDtoToEntity(warehouseDto));
+	}
+
+	@Override
+	public List<Warehouse> fetchAllWarehouse() {
+	
+		return warehouseRepository.findAll();
 	}
 
 }
