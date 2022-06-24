@@ -1,4 +1,6 @@
 package com.tigerlogistics.supplier.dto;
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class SupplierDto {
+	@NotNull
 	private Long supplierId;
 	private String name;
 	private String location;
