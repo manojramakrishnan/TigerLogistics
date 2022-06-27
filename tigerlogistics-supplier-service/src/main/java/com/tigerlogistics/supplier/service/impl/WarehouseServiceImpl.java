@@ -23,9 +23,15 @@ public class WarehouseServiceImpl implements WarehouseService{
 	}
 
 	@Override
-	public List<Warehouse> fetchAllWarehouse() {
+	public List<Warehouse> fetchAllWarehouses() {
 	
 		return warehouseRepository.findAll();
+	}
+
+	
+	@Override
+	public Warehouse fetchAllWarehousesById(long warehouseId) {
+		return warehouseRepository.findByWarehouseId(warehouseId);
 	}
 
 }

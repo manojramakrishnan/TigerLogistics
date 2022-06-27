@@ -8,6 +8,8 @@ import com.tigerlogistics.supplier.entity.Warehouse;
 @Repository
 public interface WarehouseRepository extends JpaRepository<Warehouse,Long> {
 
+	Warehouse findByWarehouseId(Long warehouseId);
+
 	
 
 }

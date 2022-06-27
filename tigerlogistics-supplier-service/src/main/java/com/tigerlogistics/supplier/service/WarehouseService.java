@@ -9,6 +9,8 @@ public interface WarehouseService {
 
 	Warehouse addWarehouse(WarehouseDto warehouseDto);
 
-	List<Warehouse> fetchAllWarehouse();
+	List<Warehouse> fetchAllWarehouses();
+
+	Warehouse fetchAllWarehousesById(long warehouseId);
 
 }
