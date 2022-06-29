@@ -37,11 +37,11 @@ public class SupplierServiceImpl implements SupplierService {
 	}
 
 	@Override
-	public void updateSupplier(UpdateSupplierDto updateSupplierDto) {
-		Supplier supplier=supplierRepository.findBySupplierId(updateSupplierDto.getSupplierId());
-		supplier.setLocation(updateSupplierDto.getLocation());
-		supplier.setName(updateSupplierDto.getName());
-		supplier.setPhoneNo(updateSupplierDto.getPhoneNo());
+	public void updateSupplier(SupplierDto supplierDto) {
+		Supplier supplier=supplierRepository.findBySupplierId(supplierDto.getSupplierId());
+		supplier.setLocation(supplierDto.getLocation());
+		supplier.setName(supplierDto.getName());
+		supplier.setPhoneNo(supplierDto.getPhoneNo());
 		supplierRepository.save(supplier);
 		
 		

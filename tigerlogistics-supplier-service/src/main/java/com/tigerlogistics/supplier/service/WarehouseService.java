@@ -13,4 +13,6 @@ public interface WarehouseService {
 
 	Warehouse fetchAllWarehousesById(long warehouseId);
 
+	void updateWarehouse(WarehouseDto warehouseDto);
+
 }

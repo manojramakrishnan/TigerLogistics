@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tigerlogistics.supplier.dto.SupplierDto;
-import com.tigerlogistics.supplier.dto.UpdateSupplierDto;
 import com.tigerlogistics.supplier.entity.Supplier;
 import com.tigerlogistics.supplier.service.SupplierService;
 
@@ -42,8 +41,8 @@ public class SupplierController {
 		
 	}
 	@PutMapping
-	public ResponseEntity<String> updateSupplier(@RequestBody UpdateSupplierDto updateSupplierDto){
-		supplierService.updateSupplier(updateSupplierDto);
+	public ResponseEntity<String> updateSupplier(@RequestBody SupplierDto supplierDto){
+		supplierService.updateSupplier(supplierDto);
 		return ResponseEntity.status(HttpStatus.OK).body("success");
 		 
 	}

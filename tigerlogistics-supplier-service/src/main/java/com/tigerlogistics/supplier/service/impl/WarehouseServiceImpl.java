@@ -12,26 +12,34 @@ import com.tigerlogistics.supplier.repository.WarehouseRepository;
 import com.tigerlogistics.supplier.service.WarehouseService;
 
 @Service
-public class WarehouseServiceImpl implements WarehouseService{
+public class WarehouseServiceImpl implements WarehouseService {
 	@Autowired
 	private WarehouseRepository warehouseRepository;
 
 	@Override
 	public Warehouse addWarehouse(WarehouseDto warehouseDto) {
-		
+
 		return warehouseRepository.save(WarehouseMapper.warehouseDtoToEntity(warehouseDto));
 	}
 
 	@Override
 	public List<Warehouse> fetchAllWarehouses() {
-	
+
 		return warehouseRepository.findAll();
 	}
 
-	
 	@Override
 	public Warehouse fetchAllWarehousesById(long warehouseId) {
 		return warehouseRepository.findByWarehouseId(warehouseId);
 	}
 
+	@Override
+	public void updateWarehouse(WarehouseDto warehouseDto) {
+		// TODO Auto-generated method stub
+		Warehouse warehouse = warehouseRepository.findByWarehouseId(warehouseDto.getWarehouseId());
+		warehouse.setName(warehouseDto.getName());
+		warehouse.setDescription(warehouse.getDescription());
+		warehouseRepository.save(warehouse);
+
+	}
 }
