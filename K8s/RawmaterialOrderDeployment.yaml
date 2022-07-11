@@ -1,0 +1,53 @@
+
+
+---------- Forwarded message ---------
+From: Manoj Ramakrishnan <manoj.daa@outlook.com>
+Date: Mon, Jul 11, 2022, 7:14 PM
+Subject: rawmaterial order deployment yaml
+To: Manoj kumar mr <manoj.rgv@gmail.com>
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rawmaterial-order-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rawmaterial-order
+  template:
+    metadata:
+      labels:
+        app: rawmaterial-order
+    spec:
+      containers:
+        - name: rawmaterial-order
+          image: manojramakrishnan/tigerlogistics-rawmaterial-order-service
+          resources:
+            limits:
+              memory: '300Mi'
+              cpu: '250m'
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+            - name: eureka.client.serviceurl.defaultzone
+              value: http://tigerlogistics-discovery-server:8761/eureka
+            - name: spring.datasource.url
+              value: jdbc:h2:tcp://tigerlogistics-database-service:9550/~/test
+            - name: eureka.instance.preferIpAddress
+              value: 'true'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tigerlogistics-rawmaterial-order-service
+spec:
+  selector:
+    app: rawmaterial-order
+  ports:
+    - name: rawmaterial-order-srv-clusterip-port
+      protocol: TCP
+      port: 9300
+      targetPort: 9300
