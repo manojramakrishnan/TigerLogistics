@@ -1,0 +1,96 @@
+
+
+---------- Forwarded message ---------
+From: Kumar Mr, Manoj <mkumarmr@deloitte.com>
+Date: Wed, Jul 13, 2022, 9:58 AM
+Subject: Supplierdeployment.yaml file
+To: manoj.rgv@gmail.com <manoj.rgv@gmail.com>
+
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: supplier-deployment
+
+spec:
+
+  replicas: 1
+
+  selector:
+
+    matchLabels:
+
+      app: supplier
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: supplier
+
+    spec:
+
+      containers:
+
+        - name: supplier
+
+          image: manojramakrishnan/tigerlogistics-supplier-service
+
+          resources:
+
+            limits:
+
+              memory: '300Mi'
+
+              cpu: '250m'
+
+          env:
+
+            - name: SPRING_PROFILES_ACTIVE
+
+              value: dev
+
+            - name: eureka.client.serviceurl.defaultzone
+
+              value: http://tigerlogistics-discovery-server:8761/eureka
+
+            - name: spring.datasource.url
+
+              value: jdbc:h2:tcp://tigerlogistics-database-service:9550/~/test
+
+            - name: eureka.instance.preferIpAddress
+
+              value: 'true'
+
+ 
+
+---
+
+apiVersion: v1
+
+kind: Service
+
+metadata:
+
+  name: tigerlogistics-supplier-service
+
+spec:
+
+  selector:
+
+    app: supplier
+
+  ports:
+
+    - name: supplier-srv-clusterip-port
+
+      protocol: TCP
+
+      port: 9600
+
+      targetPort: 9600
