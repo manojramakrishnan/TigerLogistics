@@ -38,4 +38,23 @@ public abstract class BaseRestController<T extends Model<U>, U extends Serializa
 
 		return response;
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, produces = "application/json; charset=UTF-8", consumes = "application/json; charset=UTF-8")
+	public GlobalResponseDto<T> update(@RequestBody(required = true) T entity) {
+		GlobalResponseDto<T> response = new GlobalResponseDto<>("Unable to merge entity in database: " + entity);
+		try {
+			List<EditValidation> validationErrors = service.update(entity);
+			if (validationErrors == null || validationErrors.isEmpty()) {
+				response = new GlobalResponseDto<>(entity);
+			} else {
+				response = new GlobalResponseDto<>(entity, validationErrors);
+			}
+		} catch (Exception e) {
+			response = new GlobalResponseDto<>(e.getMessage());
+		}
+
+		return response;
+	}
+
+
 }
